@@ -1,89 +1,203 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LookAtWhatAiCanDo — AI Consulting & Strategy</title>
+  <meta name="description" content="We contract, consult, and advise on how to properly use AI to achieve realistic, successful results. No hype. Just outcomes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/12.10.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/12.10.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/12.10.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/12.10.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/12.10.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/12.10.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/12.10.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/12.10.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/12.10.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/12.10.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+  <!-- NOISE OVERLAY -->
+  <div class="noise"></div>
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo"><a href=".">LAWACD</a></div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+  </nav>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      <span>AI Strategy &amp; Consulting</span>
+    </div>
+    <div class="hero-title">
+      <span class="grid-cell left row-1 line-normal">Look</span>
+      <span class="grid-cell right row-1 line-normal">At</span>
+      <span class="grid-cell left row-2 line-normal">What</span>
+      <span class="grid-cell right row-2 ai">AI</span>
+      <span class="grid-cell left row-3 can-cell">
+        <span class="can" aria-label="CAN">
+          <span class="can-letter c">C</span>
+          <span class="can-letter a">A</span>
+          <span class="can-letter n">N</span>
+        </span>
+      </span>
+      <span class="grid-cell right row-3 line-normal">Do.</span>
+    </div>
+    <p class="hero-sub">
+      <span>We cut through the noise.</span>
+      <span>No hype, no hallucinations, no vibe-coding disasters.</span>
+      <span>Just <strong>realistic AI strategy</strong> that actually ships.</span>
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Let's Talk</a>
+      <a href="#projects" class="btn-ghost">See Our Work ↓</a>
+    </div>
+    <div class="hero-ticker">
+      <div class="ticker-inner">
+        <span>CONTRACTING</span><span class="sep">✦</span>
+        <span>CONSULTING</span><span class="sep">✦</span>
+        <span>ADVISING</span><span class="sep">✦</span>
+        <span>STRATEGY</span><span class="sep">✦</span>
+        <span>IMPLEMENTATION</span><span class="sep">✦</span>
+        <span>REAL RESULTS</span><span class="sep">✦</span>
+        <span>CONTRACTING</span><span class="sep">✦</span>
+        <span>CONSULTING</span><span class="sep">✦</span>
+        <span>ADVISING</span><span class="sep">✦</span>
+        <span>STRATEGY</span><span class="sep">✦</span>
+        <span>IMPLEMENTATION</span><span class="sep">✦</span>
+        <span>REAL RESULTS</span><span class="sep">✦</span>
+      </div>
+    </div>
+  </section>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-label">// What We Do</div>
+    <h2 class="section-title">AI that works <em>in the real world.</em></h2>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <h3>AI Strategy &amp; Roadmapping</h3>
+        <p>We assess your business, identify where AI delivers real ROI, and build a phased plan that won't blow up in your face. No cargo-cult AI adoption.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <h3>Implementation &amp; Contracting</h3>
+        <p>We build it with you or for you. Hands-on AI integration, custom tooling, and production-ready systems — not just prototypes.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <h3>Team Enablement &amp; Advisory</h3>
+        <p>Your team learns to fish. We embed with your engineers, product managers, and leadership to make AI fluency permanent.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <h3>AI Risk &amp; Reality Audits</h3>
+        <p>Already using AI? We review your stack, prompts, and workflows for hallucination risk, compliance gaps, and missed opportunities.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="divider-marquee">
+    <div class="marquee-inner">
+      <span>PROOF OF CONCEPT</span><span class="sep">◆</span>
+      <span>OPEN SOURCE</span><span class="sep">◆</span>
+      <span>BUILT WITH AI</span><span class="sep">◆</span>
+      <span>SHIPPED &amp; WORKING</span><span class="sep">◆</span>
+      <span>PROOF OF CONCEPT</span><span class="sep">◆</span>
+      <span>OPEN SOURCE</span><span class="sep">◆</span>
+      <span>BUILT WITH AI</span><span class="sep">◆</span>
+      <span>SHIPPED &amp; WORKING</span><span class="sep">◆</span>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <div class="section-label">// Example Projects</div>
+    <h2 class="section-title">We don't just talk. <em>We build.</em></h2>
+    <p class="projects-intro">
+      Every project below is a working proof-of-concept demonstrating what's possible
+      when AI is applied with intention. All open source.
+      <span class="freshness" id="freshness"></span>
+    </p>
+
+    <div class="projects-grid" id="projects-grid">
+      <!-- Populated by app.js from /data/projects.json -->
+      <div class="project-loading">
+        <span class="loading-dot"></span>
+        <span class="loading-dot"></span>
+        <span class="loading-dot"></span>
+      </div>
+    </div>
+
+    <div class="projects-footer">
+      <p>More projects in progress — follow us on GitHub for updates.</p>
+      <a href="https://github.com/LookAtWhatAiCanDo" target="_blank" rel="noopener" class="btn-ghost">
+        View GitHub Org ↗
+      </a>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy">
+    <div class="philosophy-inner">
+      <div class="philosophy-quote">
+        <span class="big-quote">"</span>
+        AI doesn't fail because the models are bad.<br/>
+        It fails because the <em>strategy</em> is bad.
+        <span class="big-quote">"</span>
+      </div>
+      <div class="philosophy-body">
+        <p>Most AI projects die in the gap between demo and production. We've seen it happen over and over — the ChatGPT wrapper that hallucinates 30% of the time, the automation that broke the workflow it was supposed to fix, the six-figure AI investment with zero measurable outcome.</p>
+        <p>We exist to close that gap. LookAtWhatAiCanDo, LLC was built by practitioners who've shipped AI systems that actually work — and who've learned exactly where things go wrong.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-label">// Get In Touch</div>
+    <h2 class="section-title">Ready to see what <em>AI can do for you?</em></h2>
+    <div class="contact-inner">
+      <div class="contact-left">
+        <p>We work with startups, scaleups, and enterprises. If you're serious about AI and want a partner who'll be straight with you about what's possible — let's talk.</p>
+        <ul class="contact-list">
+          <li><span>→</span> Strategy engagements</li>
+          <li><span>→</span> Fractional AI leadership</li>
+          <li><span>→</span> Project-based contracting</li>
+          <li><span>→</span> Team workshops &amp; training</li>
+        </ul>
+      </div>
+      <div class="contact-right">
+        <a href="mailto:hello@lookatwhataicando.llc" class="contact-email">
+          <span class="email-line">hello@</span>
+          <span class="email-line">lookatwhataicando.llc</span>
+        </a>
+        <a href="https://github.com/LookAtWhatAiCanDo" target="_blank" rel="noopener" class="contact-github">
+          github.com/LookAtWhatAiCanDo ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-left">
+      © 2026 LookAtWhatAiCanDo, LLC
+    </div>
+    <div class="footer-right">
+      lookatwhataicando.llc
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
 </html>
