@@ -142,13 +142,11 @@ em { font-style: italic; font-family: var(--font-serif); }
   font-family: var(--font-display);
   font-size: clamp(5rem, 14vw, 13rem);
   line-height: 0.9;
-  letter-spacing: -0.01em;
   color: var(--white);
   width: fit-content;
 }
 
 .hero-title .grid-cell {
-  /*border: 1px solid magenta; /* For debugging grid layout, can be removed */
   display: block;
   animation: fadeUp 0.8s ease both;
 }
@@ -156,77 +154,57 @@ em { font-style: italic; font-family: var(--font-serif); }
 .hero-title .left { text-align: right; }
 .hero-title .right { text-align: left; }
 
-/* Optical alignment: trim left side-bearings so At/AI/Do. read as one vertical start line. */
-.hero-title .right.row-1 { margin-left: -0.02em; }
-.hero-title .right.row-2 { margin-left: -0.03em; }
-.hero-title .right.row-3 { margin-left: -0.055em; }
+/* Optical alignment: trim left side-bearing so "Do." aligns with At/AI. */
+.hero-title .right.row-3 { margin-left: -0.04em; }
 
 .hero-title .row-1 { animation-delay: 0.1s; }
 .hero-title .row-2 { animation-delay: 0.2s; }
 .hero-title .row-3 { animation-delay: 0.3s; }
 
-/* Control which title fragments render with the display (all-caps) face
-   vs a serif face for normal case. */
+/* Serif face for mixed-case fragments (Look, What, At, Do.) */
 .hero-title .line-normal {
   font-family: var(--font-serif);
   text-transform: none;
   color: var(--white);
 }
 
+/* "I" in AI — accent color */
 .hero-title .ai {
   font-family: var(--font-serif);
   text-transform: none;
   color: var(--accent);
 }
 
-.hero-title .can {
-  color: var(--accent);
-  font-family: "Arial Narrow", Arial, sans-serif;
-  font-style: italic;
-  font-size: 1.04em;
-  font-weight: 600;
+/* "AI" cell — inline-flex to align A and I on baseline */
+.hero-title .ai-italic {
   display: inline-flex;
   align-items: flex-end;
-  transform: translateX(-0.025em) translateY(-0.045em);
-  letter-spacing: 0;
   text-align: center;
 }
 
-.hero-title .can-letter.c {
-  z-index: 3;
-  margin-left: -0.0em;
+/* "A" overrides inherited accent from sibling context */
+.hero-title .ai-italic .line-normal { color: var(--white); }
+
+/* Both letters share baseline alignment */
+.hero-title .ai-italic .line-normal,
+.hero-title .ai-italic .ai {
+  display: inline-flex;
+  align-items: flex-end;
 }
 
-.hero-title .can-letter.a {
-  z-index: 2;
-  margin-left: -0.08em;
+/* "CAN" — italic serif with tracking */
+.hero-title .can {
+  color: var(--accent);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: flex-end;
+  letter-spacing: 0.1em;
+  text-align: center;
 }
 
-.hero-title .can-letter.n {
-  z-index: 1;
-  margin-left: -0.055em;
-}
-
-.hero-sub {
-  max-width: 560px;
-  font-size: 0.95rem;
-  color: var(--dim);
-  line-height: 1.8;
-  margin-bottom: 1rem;
-  animation: fadeUp 0.8s 0.4s ease both;
-}
-
-.hero-sub span { display: block; }
-
-.hero-sub strong { color: var(--text); }
-
-.hero-cta {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  animation: fadeUp 0.8s 0.5s ease both;
-  margin-bottom: 1rem;
-}
+.hero-title .can-letter.c { z-index: 3; }
 
 .btn-primary {
   display: inline-block;
@@ -261,6 +239,14 @@ em { font-style: italic; font-family: var(--font-serif); }
 .btn-ghost:hover {
   border-color: var(--accent);
   color: var(--accent);
+}
+
+.hero-sub {
+  padding-bottom: 1rem;
+}
+
+.hero-sub span {
+  display: block;
 }
 
 /* TICKER */
