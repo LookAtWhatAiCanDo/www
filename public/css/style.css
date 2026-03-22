@@ -106,7 +106,7 @@ em { font-style: italic; font-family: var(--font-serif); }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 5.5rem 2.5rem 1rem;
+  padding: 5.5rem 2.5rem 3.5rem;
   position: relative;
   overflow: hidden;
 }
@@ -258,11 +258,18 @@ em { font-style: italic; font-family: var(--font-serif); }
   color: var(--accent);
 }
 
-/* "AI" cell — inline-flex to align A and I on baseline */
+/* "AI" cell — inline-grid so .ai-text and .hero-ai-img stack in the same cell */
 .hero-title .ai-italic {
+  display: inline-grid;
+  align-items: end;
+  text-align: center;
+}
+
+/* .ai-text wraps "A"+"I" letters and takes over the old inline-flex role */
+.hero-title .ai-text {
   display: inline-flex;
   align-items: flex-end;
-  text-align: center;
+  grid-area: 1 / 1;
 }
 
 /* "A" overrides inherited accent from sibling context */
@@ -275,15 +282,49 @@ em { font-style: italic; font-family: var(--font-serif); }
   align-items: flex-end;
 }
 
+/* Logo image — shares exact same grid cell as .ai-text, hidden by default */
+.hero-title .right.row-2 { overflow: visible; }
+.hero-ai-img {
+  grid-area: 1 / 1;
+  display: none;
+  height: 0.900595em;
+  width: auto;
+  /*translate: -0.12em 0;*/
+}
+
+/* Glitch: swap text → logo */
+.ai-italic.glitching .ai-text {
+  visibility: hidden;
+}
+.ai-italic.glitching .hero-ai-img {
+  display: block;
+  animation: hero-logo-glitch 0.42s steps(1) forwards;
+}
+
+@keyframes hero-logo-glitch {
+  0%   { opacity: 0;    transform: translateX( 7px); clip-path: inset(0 0 0 0); }
+  10%  { opacity: 1;    transform: translateX(-4px); clip-path: inset(0 0 0 0); }
+  20%  { opacity: 0.75; transform: translateX( 3px); clip-path: inset(18% 0 42% 0); }
+  30%  { opacity: 1;    transform: translateX( 0);   clip-path: inset(0 0 0 0); }
+  42%  { opacity: 0.85; transform: translateX(-3px); clip-path: inset(0 0 0 0); }
+  55%  { opacity: 1;    transform: translateX( 1px); clip-path: inset(33% 0 22% 0); }
+  66%  { opacity: 1;    transform: translateX( 0);   clip-path: inset(0 0 0 0); }
+  78%  { opacity: 0.9;  transform: translateX(-1px); clip-path: inset(0 0 0 0); }
+  90%  { opacity: 0.55; transform: translateX( 3px); clip-path: inset(55% 0 10% 0); }
+  100% { opacity: 0;    transform: translateX(-5px); clip-path: inset(0 0 0 0); }
+}
+
 /* "CAN" — italic serif with tracking */
 .hero-title .can {
   color: var(--accent);
+  transform: translateY(0.02em);
   font-family: var(--font-serif);
+  font-size: 0.95em;
   font-style: italic;
   font-weight: 700;
+  letter-spacing: 0.1em;
   display: inline-flex;
   align-items: flex-end;
-  letter-spacing: 0.1em;
   text-align: center;
 }
 
@@ -569,9 +610,9 @@ section {
 }
 
 .project-name {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  letter-spacing: 0.04em;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
   color: var(--white);
   line-height: 1;
 }
@@ -789,7 +830,7 @@ section {
     white-space: nowrap;
   }
 
-  .hero { padding: 5.5rem 1.5rem 1.5rem; }
+  .hero { padding: 7.5rem 1.5rem 3.5rem; }
 
   .hero-inner {
     flex-direction: column;

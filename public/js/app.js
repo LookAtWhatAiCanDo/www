@@ -78,3 +78,28 @@ async function loadProjects() {
 
 // Init
 loadProjects();
+
+// ── Hero AI glitch ────────────────────────────────────────────────────────────
+// Every 4–9 seconds, briefly replace the "AI" text with the logo SVG using a
+// CRT-corruption animation, then snap back to text.
+(function initHeroGlitch() {
+  //return; // DISABLED FOR NOW — MAY REVISIT LATER
+  const aiSpan = document.querySelector('.hero-title .ai-italic');
+  if (!aiSpan) return;
+
+  const GLITCH_DURATION = 420;   // ms — matches animation duration above
+
+  function glitch() {
+    aiSpan.classList.add('glitching');
+    setTimeout(() => {
+      aiSpan.classList.remove('glitching');
+      schedule();
+    }, GLITCH_DURATION);
+  }
+
+  function schedule() {
+    setTimeout(glitch, 2000 + Math.random() * 2000); // 2–4 s
+  }
+
+  schedule(); // first glitch after 2–4 s on load
+}());
