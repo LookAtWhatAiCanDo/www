@@ -264,18 +264,15 @@ em { font-style: italic; font-family: var(--font-serif); }
   animation: cursor-blink 1.06s step-start infinite;
 }
 
-/* "AI" cell — inline-grid so .ai-text and .hero-ai-img stack in the same cell */
+/* "AI" cell — relative so the logo can be absolutely overlaid on the text */
 .hero-title .ai-italic {
-  display: inline-grid;
-  align-items: end;
-  text-align: center;
+  position: relative;
 }
 
-/* .ai-text wraps "A"+"I" letters and takes over the old inline-flex role */
+/* .ai-text wraps "A"+"I" — sizes the cell, logo overlays on top */
 .hero-title .ai-text {
   display: inline-flex;
   align-items: flex-end;
-  grid-area: 1 / 1;
 }
 
 /* "A" overrides inherited accent from sibling context */
@@ -288,14 +285,16 @@ em { font-style: italic; font-family: var(--font-serif); }
   align-items: flex-end;
 }
 
-/* Logo image — shares exact same grid cell as .ai-text, hidden by default */
+/* Logo image — absolutely overlaid on top of .ai-text, hidden by default */
 .hero-title .right.row-2 { overflow: visible; }
 .hero-ai-img {
-  grid-area: 1 / 1;
+  position: absolute;
+  top: 0;
+  left: 0;
   display: none;
-  height: 0.900595em;
+  height: 100%;
   width: auto;
-  /*translate: -0.12em 0;*/
+  translate: -0.12em 0;
 }
 
 /* Glitch: swap text → logo */
