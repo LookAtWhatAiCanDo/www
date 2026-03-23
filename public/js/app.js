@@ -73,6 +73,7 @@ async function loadProjects() {
     freshness.textContent = `↻ Data refreshed ${timeAgo(fetchedAt)} via GitHub`;
   }
 
+  projects.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
   renderProjects(projects);
 }
 
