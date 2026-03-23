@@ -99,8 +99,8 @@ loadProjects();
   }
 
   function schedule() {
-    setTimeout(glitch, 2000 + Math.random() * 2000); // 2–4 s
+    setTimeout(glitch, 3000 + Math.random() * 3000); // 3–6 s
   }
 
-  schedule(); // first glitch after 2–4 s on load
+  schedule(); // first glitch after 3–6 s on load
 }());
