@@ -53,6 +53,16 @@ function renderProjects(projects, fromCache = false) {
       </div>
     `;
 
+    // Track project card clicks
+    card.addEventListener('click', () => {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'project_click', {
+          'project_name': p.name,
+          'project_url': p.url
+        });
+      }
+    });
+
     grid.appendChild(card);
   });
 }
@@ -103,4 +113,39 @@ loadProjects();
   }
 
   schedule(); // first glitch after 3–6 s on load
+}());
+
+// ── Analytics Event Tracking ──────────────────────────────────────────────────
+(function initAnalyticsTracking() {
+  if (typeof gtag === 'undefined') return;
+
+  // Track CTA button clicks
+  document.querySelectorAll('.btn-primary, .btn-ghost').forEach(btn => {
+    btn.addEventListener('click', () => {
+      gtag('event', 'cta_click', {
+        'button_text': btn.textContent.trim(),
+        'button_href': btn.getAttribute('href')
+      });
+    });
+  });
+
+  // Track contact email clicks
+  const emailLink = document.querySelector('a[href^="mailto:"]');
+  if (emailLink) {
+    emailLink.addEventListener('click', () => {
+      gtag('event', 'contact_email_click', {
+        'contact_method': 'email_link'
+      });
+    });
+  }
+
+  // Track social media link clicks
+  document.querySelectorAll('.social-link').forEach(link => {
+    link.addEventListener('click', () => {
+      gtag('event', 'social_click', {
+        'platform': link.querySelector('.social-name')?.textContent || 'unknown',
+        'url': link.getAttribute('href')
+      });
+    });
+  });
 }());
