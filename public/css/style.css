@@ -889,6 +889,92 @@ section {
 }
 
 /* =============================================
+   PRIVACY POLICY PAGE
+   ============================================= */
+.policy-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 7rem 2.5rem 6rem;
+}
+
+.policy-wrap h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 1;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.policy-effective {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 3.5rem;
+}
+
+.policy-section {
+  margin-bottom: 2.5rem;
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+}
+
+.policy-section h2 {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.policy-section p,
+.policy-section li {
+  font-size: 0.88rem;
+  color: var(--dim);
+  line-height: 1.9;
+  margin-bottom: 0.8rem;
+}
+
+.policy-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.policy-section ul li::before {
+  content: '→ ';
+  color: var(--accent);
+}
+
+.policy-section a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.policy-section a:hover {
+  color: var(--white);
+}
+
+.policy-back {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.2rem;
+  margin-bottom: 3rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.policy-back:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* =============================================
    ANIMATIONS
    ============================================= */
 @keyframes fadeUp {
@@ -987,5 +1073,9 @@ section {
   .cookie-actions {
     width: 100%;
     justify-content: flex-end;
+  }
+
+  .policy-wrap {
+    padding: 6rem 1.5rem 4rem;
   }
 }
