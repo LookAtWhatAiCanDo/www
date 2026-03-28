@@ -521,7 +521,7 @@ section {
   animation: ticker 20s linear infinite reverse;
   font-size: 0.65rem;
   letter-spacing: 0.25em;
-  color: var(--muted);
+  color: var(--dim);
 }
 
 .marquee-inner .sep { color: var(--accent); }
