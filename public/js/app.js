@@ -117,17 +117,15 @@ loadProjects();
 
 // ── Analytics Event Tracking ──────────────────────────────────────────────────
 (function initAnalyticsTracking() {
-  if (typeof gtag === 'undefined') return;
-
   // Track CTA button clicks
   document.querySelectorAll('.btn-primary, .btn-ghost').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const buttonText = btn.textContent.trim();
-      const buttonHref = btn.getAttribute('href');
-      gtag('event', 'cta_click', {
-        'button_text': buttonText,
-        'button_href': buttonHref
-      });
+    btn.addEventListener('click', () => {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'cta_click', {
+          'button_text': btn.textContent.trim(),
+          'button_href': btn.getAttribute('href')
+        });
+      }
     });
   });
 
@@ -135,20 +133,23 @@ loadProjects();
   const emailLink = document.querySelector('a[href^="mailto:"]');
   if (emailLink) {
     emailLink.addEventListener('click', () => {
-      gtag('event', 'contact_email_click', {
-        'email': emailLink.getAttribute('href').replace('mailto:', '')
-      });
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'contact_email_click', {
+          'contact_method': 'email_link'
+        });
+      }
     });
   }
 
   // Track social media link clicks
   document.querySelectorAll('.social-link').forEach(link => {
     link.addEventListener('click', () => {
-      const platform = link.querySelector('.social-name')?.textContent || 'unknown';
-      gtag('event', 'social_click', {
-        'platform': platform,
-        'url': link.getAttribute('href')
-      });
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'social_click', {
+          'platform': link.querySelector('.social-name')?.textContent || 'unknown',
+          'url': link.getAttribute('href')
+        });
+      }
     });
   });
 }());
