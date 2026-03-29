@@ -15,6 +15,7 @@
     if (typeof gtag !== 'function') return;
     gtag('consent', 'update', { 'analytics_storage': 'granted' });
     gtag('config', GA_ID);
+    window.analyticsConsented = true;
   }
 
   function showBanner() {
@@ -28,7 +29,12 @@
   }
 
   // Apply any previously stored decision immediately
-  var stored = localStorage.getItem(STORAGE_KEY);
+  var stored = null;
+  try {
+    stored = localStorage.getItem(STORAGE_KEY);
+  } catch (e) {
+    // Storage unavailable — treat as no decision
+  }
   if (stored === 'accepted') {
     enableAnalytics();
   } else if (!stored) {
@@ -43,7 +49,7 @@
 
   if (acceptBtn) {
     acceptBtn.addEventListener('click', function () {
-      localStorage.setItem(STORAGE_KEY, 'accepted');
+      try { localStorage.setItem(STORAGE_KEY, 'accepted'); } catch (e) {}
       enableAnalytics();
       hideBanner();
     });
@@ -51,7 +57,7 @@
 
   if (declineBtn) {
     declineBtn.addEventListener('click', function () {
-      localStorage.setItem(STORAGE_KEY, 'declined');
+      try { localStorage.setItem(STORAGE_KEY, 'declined'); } catch (e) {}
       hideBanner();
     });
   }
