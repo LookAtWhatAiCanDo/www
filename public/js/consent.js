@@ -49,8 +49,9 @@
 
   if (acceptBtn) {
     acceptBtn.addEventListener('click', function () {
-      try { localStorage.setItem(STORAGE_KEY, 'accepted'); } catch (e) {}
-      enableAnalytics();
+      var saved = false;
+      try { localStorage.setItem(STORAGE_KEY, 'accepted'); saved = true; } catch (e) {}
+      if (saved) enableAnalytics();
       hideBanner();
     });
   }

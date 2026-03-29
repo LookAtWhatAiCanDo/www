@@ -4,6 +4,11 @@
    generated at deploy time by GitHub Actions.
    ============================================= */
 
+// Returns true if the user has consented to tracking and gtag is available, false otherwise.
+function canTrack() {
+  return window.analyticsConsented === true && typeof gtag === 'function';
+}
+
 function timeAgo(dateString) {
   if (!dateString) return null;
   const date = new Date(dateString);
@@ -55,7 +60,7 @@ function renderProjects(projects, fromCache = false) {
 
     // Track project card clicks
     card.addEventListener('click', () => {
-      if (window.analyticsConsented && typeof gtag === 'function') {
+      if (canTrack()) {
         gtag('event', 'project_click', {
           'project_name': p.name,
           'project_url': p.url
@@ -120,7 +125,7 @@ loadProjects();
   // Track CTA button clicks
   document.querySelectorAll('.btn-primary, .btn-ghost').forEach(btn => {
     btn.addEventListener('click', () => {
-      if (!window.analyticsConsented || typeof gtag !== 'function') return;
+      if (!canTrack()) return;
       gtag('event', 'cta_click', {
         'button_text': btn.textContent.trim(),
         'button_href': btn.getAttribute('href')
@@ -132,7 +137,7 @@ loadProjects();
   const emailLink = document.querySelector('a[href^="mailto:"]');
   if (emailLink) {
     emailLink.addEventListener('click', () => {
-      if (!window.analyticsConsented || typeof gtag !== 'function') return;
+      if (!canTrack()) return;
       gtag('event', 'contact_email_click', {
         'contact_method': 'email_link'
       });
@@ -142,7 +147,7 @@ loadProjects();
   // Track social media link clicks
   document.querySelectorAll('.social-link').forEach(link => {
     link.addEventListener('click', () => {
-      if (!window.analyticsConsented || typeof gtag !== 'function') return;
+      if (!canTrack()) return;
       gtag('event', 'social_click', {
         'platform': link.querySelector('.social-name')?.textContent || 'unknown',
         'url': link.getAttribute('href')
