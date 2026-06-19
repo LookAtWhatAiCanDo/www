@@ -1,5 +1,5 @@
 /* =============================================
-   app.js — LookAtWhatAiCanDo
+   app.js — Look@WhatAiCanDo
    Renders projects from pre-built JSON,
    generated at deploy time by GitHub Actions.
    ============================================= */
@@ -49,7 +49,7 @@ function renderProjects(projects, fromCache = false) {
 
     card.innerHTML = `
       <div class="project-name">${p.name}</div>
-      <div class="project-desc">${p.description || 'Open source project by LookAtWhatAiCanDo, LLC.'}</div>
+      <div class="project-desc">${p.description || 'Open source project by What AI Can Do, LLC.'}</div>
       <div class="project-meta">
         ${p.language ? `<span class="project-lang">${p.language}</span>` : ''}
         ${p.stars > 0 ? `<span class="project-stat">★ ${p.stars}</span>` : ''}

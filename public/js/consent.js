@@ -1,5 +1,5 @@
 /* =============================================
-   consent.js — LookAtWhatAiCanDo
+   consent.js — Look@WhatAiCanDo
    Cookie consent management.
    - Checks localStorage for a stored decision.
    - Shows/hides the consent banner accordingly.
